@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     [Header("Weapon Values")]
     [SerializeField] private float _cooldown = 0.5f;
     private float _cooldownCounter = 0.0f;
+
+    public static int score = 0; 
     
     // Start is called before the first frame update
     void Start() {
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour {
             return;
 
 
+        score = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour {
@@ -25,8 +26,18 @@ public class Bullet : MonoBehaviour {
         if(collision.gameObject.tag != "Enemy")
             return;
 
-            
+        IncreaseScore();
         Destroy(gameObject);
         Destroy(collision.gameObject);
+    }
+
+    private void IncreaseScore(){
+        PlayerController.score++;
+        UpdateScore();
+    }
+
+    private void UpdateScore(){
+        GameObject gameObject = GameObject.Find("UI");
+        gameObject.GetComponent<Text>().text = "Puntos: " + PlayerController.score;
     }
 }

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Player Values")]
     [SerializeField] private float _trustSpeed = 10.0f;
     [SerializeField] private float _rotationSpeed = 3.0f;
+    [SerializeField] private Vector2 _borderLimit = new Vector2(5.0f,5.0f);
 
     [Header("Weapon Values")]
     [SerializeField] private float _cooldown = 0.5f;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         Shoot();
+        InfiniteSpace();
     }
 
     void FixedUpdate(){
@@ -67,5 +69,20 @@ public class PlayerController : MonoBehaviour {
 
         score = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void InfiniteSpace(){
+        Vector2 pos = transform.position;
+
+        if(pos.x > _borderLimit.x)
+            pos.x = -_borderLimit.x + 1;
+        else if(pos.x < -_borderLimit.x)
+            pos.x = -_borderLimit.x - 1;
+        else if(pos.y > _borderLimit.y)
+            pos.y = -_borderLimit.y + 1;
+        else if(pos.x < -_borderLimit.y)
+            pos.y = -_borderLimit.y - 1;
+
+        transform.position = pos;
     }
 }

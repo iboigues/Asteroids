@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Player Values")]
     [SerializeField] private float _trustSpeed = 10.0f;
     [SerializeField] private float _rotationSpeed = 3.0f;
-    [SerializeField] private Vector2 _borderLimit = new Vector2(5.0f,5.0f);
+    private Vector2 _borderLimit = new Vector2(5.0f,5.0f);
 
     [Header("Weapon Values")]
     [SerializeField] private float _cooldown = 0.5f;
@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         _body = GetComponent<Rigidbody2D>();
+
+        _borderLimit.x = Camera.main.orthographicSize + 1;
+        _borderLimit.y = (Camera.main.orthographicSize + 1) * Screen.width / Screen.width;
     }
 
     // Update is called once per frame
@@ -77,11 +80,11 @@ public class PlayerController : MonoBehaviour {
         if(pos.x > _borderLimit.x)
             pos.x = -_borderLimit.x + 1;
         else if(pos.x < -_borderLimit.x)
-            pos.x = -_borderLimit.x - 1;
+            pos.x = _borderLimit.x - 1;
         else if(pos.y > _borderLimit.y)
             pos.y = -_borderLimit.y + 1;
-        else if(pos.x < -_borderLimit.y)
-            pos.y = -_borderLimit.y - 1;
+        else if(pos.y < -_borderLimit.y)
+            pos.y = _borderLimit.y - 1;
 
         transform.position = pos;
     }

@@ -13,9 +13,15 @@ public class EnemySpawner : MonoBehaviour {
 
     private float _spawnNext = 0;
 
+    void Start(){
+        _xLimit = Camera.main.orthographicSize + 1;
+        Debug.Log(_xLimit);
+    }
+
     // Update is called once per frame
     void Update() {
         if(Time.time > _spawnNext){
+
             _spawnNext = Time.time + 60 / _spawnRate;
 
             _spawnRate += _spawnRateIncrement;

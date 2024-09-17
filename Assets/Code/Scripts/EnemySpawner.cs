@@ -15,7 +15,6 @@ public class EnemySpawner : MonoBehaviour {
 
     void Start(){
         _xLimit = Camera.main.orthographicSize + 1;
-        Debug.Log(_xLimit);
     }
 
     // Update is called once per frame

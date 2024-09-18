@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4874663894770905474}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,4 +148,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 9047328061997020702}
   _speed: 10
-  _lifetime: 4

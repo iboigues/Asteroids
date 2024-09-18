@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D _body;
     [SerializeField] private GameObject _weapon;
-    [SerializeField] private Bullet _bullet;
 
     [Header("Player Values")]
     [SerializeField] private float _trustSpeed = 10.0f;
@@ -16,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _borderLimit = new Vector2(5.0f,5.0f);
 
     [Header("Weapon Values")]
-    [SerializeField] private float _cooldown = 0.5f;
+    [SerializeField] private float _cooldown = 0.3f;
     private float _cooldownCounter = 0.0f;
 
     public static int score = 0; 
@@ -56,8 +55,7 @@ public class PlayerController : MonoBehaviour {
 
 
         if(Input.GetKey(KeyCode.Space) && _cooldownCounter <= 0.0f) {
-            Bullet bullet = Instantiate(_bullet,_weapon.transform.position,Quaternion.identity);
-
+            Bullet bullet = ObjectPool.Instance.SpawnFromPool<Bullet>("Bullet",_weapon.transform.position,Quaternion.identity);
             bullet.Shoot(_weapon.transform.right);
             
             _cooldownCounter = _cooldown;

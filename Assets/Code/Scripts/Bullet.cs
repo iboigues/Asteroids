@@ -10,12 +10,11 @@ public class Bullet : MonoBehaviour {
 
     [Header("Physic Values")]
     [SerializeField] private float _speed = 10.0f;
-    [SerializeField] private float _lifetime = 4.0f;
+    //[SerializeField] private float _lifetime = 4.0f;
 
     // Start is called before the first frame update
     void Start() {
         _body = GetComponent<Rigidbody2D>();
-        Destroy(gameObject,_lifetime);
     }
 
     public void Shoot(Vector3 direction){
@@ -27,8 +26,10 @@ public class Bullet : MonoBehaviour {
             return;
 
         IncreaseScore();
-        Destroy(gameObject);
-        Destroy(collision.gameObject);
+
+        gameObject.SetActive(false);
+        collision.gameObject.SetActive(false);
+        _body.velocity = Vector2.zero;
     }
 
     private void IncreaseScore(){

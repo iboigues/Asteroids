@@ -350,6 +350,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &329608131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329608133}
+  - component: {fileID: 329608132}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &329608132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329608131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e022efc2d7693d0d598aea93e79f3690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pools:
+  - tag: Bullet
+    prefab: {fileID: 4967905525294378410, guid: 7e4c58f1eda414f41b326b3a22d18ff6, type: 3}
+    size: 30
+  - tag: Meteor
+    prefab: {fileID: 4804016319888874343, guid: 2dacde388bd9a644b80051ebc32a6105, type: 3}
+    size: 50
+  - tag: SmallMeteor
+    prefab: {fileID: 4804016319888874343, guid: ccebe293918c89874bdc981629a664ec, type: 3}
+    size: 50
+--- !u!4 &329608133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329608131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3604338, y: -2.7349317, z: 0.55364966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &890570512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -979,7 +1033,6 @@ MonoBehaviour:
   _spawnRate: 10
   _spawnRateIncrement: 1
   _xLimit: 5
-  _lifetime: 4
 --- !u!4 &1395886202
 Transform:
   m_ObjectHideFlags: 0
@@ -1335,10 +1388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 1654900662}
-  _bullet: {fileID: 4874663894770905474, guid: 7e4c58f1eda414f41b326b3a22d18ff6, type: 3}
   _trustSpeed: 10
   _rotationSpeed: 3
-  _cooldown: 1
+  _cooldown: 0.3
 --- !u!70 &1924736645
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

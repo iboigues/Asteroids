@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: Que funcione la wea de que se recargue
 public class ObjectPool : MonoBehaviour {
 
     [System.Serializable]
@@ -26,9 +25,16 @@ public class ObjectPool : MonoBehaviour {
     [SerializeField] private List<Pool> _pools;
     private Dictionary<string, Queue<GameObject>> _poolDictionary;
 
-
     // Start is called before the first frame update
-    void Start() {
+    void Start(){
+        LoadPool();
+    }
+
+    void OnLevelWasLoaded() {
+        LoadPool();
+    }
+
+    private void LoadPool(){
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach(Pool pool in _pools) {

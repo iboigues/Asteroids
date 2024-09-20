@@ -14,12 +14,21 @@ public class Meteor : MonoBehaviour {
         _body = GetComponent<Rigidbody2D>();
     }
 
+    private void Update(){
+        if(transform.position.y < -50){
+            _body.velocity = Vector2.zero;
+            gameObject.SetActive(false);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.GetComponent<Bullet>() == null)
             return;
 
         if(_small)
             return;
+
+        _body.velocity = Vector2.zero;
 
         Vector2 newPos = transform.position;
         newPos.x += 1;

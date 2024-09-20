@@ -55,7 +55,14 @@ public class PlayerController : MonoBehaviour {
 
 
         if(Input.GetKey(KeyCode.Space) && _cooldownCounter <= 0.0f) {
+
             Bullet bullet = ObjectPool.Instance.SpawnFromPool<Bullet>("Bullet",_weapon.transform.position,Quaternion.identity);
+
+            if(bullet == null){
+                Debug.LogError("No disparo");
+                return;
+            }
+
             bullet.Shoot(_weapon.transform.right);
             
             _cooldownCounter = _cooldown;
@@ -63,7 +70,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.tag != "Enemy")
+        if(collision.gameObject.GetComponent<Meteor>() == null)
             return;
 
 

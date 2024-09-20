@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.tag != "Enemy")
+        if(collision.gameObject.GetComponent<Meteor>() == null)
             return;
 
         IncreaseScore();
@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour {
     }
 
     private void UpdateScore(){
-        GameObject gameObject = GameObject.Find("UI");
+        GameObject gameObject = GameObject.Find("Score");
         gameObject.GetComponent<Text>().text = "Puntos: " + PlayerController.score;
     }
 }

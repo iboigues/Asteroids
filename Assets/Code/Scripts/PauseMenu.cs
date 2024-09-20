@@ -29,6 +29,12 @@ public class PauseMenu : MonoBehaviour {
         }
     }
 
+    public void PauseButton(){
+        if(!_paused) {
+            Pause();
+        }
+    }
+
     public void Resume(){
         Time.timeScale = 1.0f;
         _paused = false;

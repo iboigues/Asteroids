@@ -9,7 +9,6 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] private int _spawnRate = 10;
     [SerializeField] private int _spawnRateIncrement = 1;
     [SerializeField] private float _xLimit = 5.0f;
-    //[SerializeField] private float _lifetime = 4.0f;
 
     private float _spawnNext = 0;
 
@@ -28,9 +27,6 @@ public class EnemySpawner : MonoBehaviour {
             float rand = Random.Range(-_xLimit,_xLimit);
 
             Vector2 pos = new Vector2(rand,8.0f);
-
-            //GameObject enemy = Instantiate(_enemy,pos,Quaternion.identity);
-            //Destroy(enemy,_lifetime);
 
             ObjectPool.Instance.SpawnFromPool("Meteor",pos,Quaternion.identity);
         }

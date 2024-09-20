@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectPool : MonoBehaviour {
 
@@ -25,12 +27,23 @@ public class ObjectPool : MonoBehaviour {
     [SerializeField] private List<Pool> _pools;
     private Dictionary<string, Queue<GameObject>> _poolDictionary;
 
+
+    // Al activar el script nos suscribimos el evento sceneLoaded para cargar la pool 
+    private void OnEnable(){
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // Al desactivar el script nos desuscribimos
+    private void OnDisable(){
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     // Start is called before the first frame update
     void Start(){
         LoadPool();
     }
 
-    void OnLevelWasLoaded() {
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
         LoadPool();
     }
 
